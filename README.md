@@ -1,5 +1,5 @@
 # Travel_Assistant
-A travel assistant application leveraging a branch of large language models (LLMs): a generative pre-trained transformer (GPT)
+A travel assistant application leveraging a generative pre-trained transformer(GPT) model: a branch of large language models (LLMs).
 
 # To-Do List:
   1. Import OpenAI library.
