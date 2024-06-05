@@ -2,6 +2,11 @@
 ~~A travel assistant application leveraging a generative pre-trained transformer(GPT) model: a branch of large language models (LLMs).~~.\
 An AI powered travel assistant application.
 
+# Installation
+Python 3.9.13\
+requests 2.26.0\
+beautifulsoup 4.12.3
+
 # To-Do List:
   1. Data Collection and Validation
   2. Accomodation Management
@@ -49,3 +54,4 @@ An AI powered travel assistant application.
   *Count* filed should be a positive integer.\
   *Theme* should be one of the predefined definitions
 
+   
