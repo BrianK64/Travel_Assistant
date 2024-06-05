@@ -1,16 +1,16 @@
 # Travel_Assistant
-~~A travel assistant application leveraging a generative pre-trained transformer(GPT) model: a branch of large language models (LLMs).~~
+~~A travel assistant application leveraging a generative pre-trained transformer(GPT) model: a branch of large language models (LLMs).~~.\
 An AI powered travel assistant application.
 
 # To-Do List:
-  1. Import OpenAI library.
-  2. Get OpenAI (ChatGPT) API key(s)
-  3. Create a model
-  4. Feed the model with examples (Few-Shot Prompting)
-  5. Apply a new prompt
-  6. Receive a response
+  1. Data Collection and Validation
+  2. Accomodation Management
+  3. AI Recommendation System
+  4. User Interface
+  5. Test
+  6. Deploy
 
-# Prompt Completion Structure
+# Data Management
   ## Format
   In the process of training the model, examples that are provided to the model would be in this structured format:\
     {"Start_Date": <Start_Date_Placeholder>,\
@@ -24,12 +24,18 @@ An AI powered travel assistant application.
     
   ## Description
   Here, the entry "Accomodation" has number count # attached to account for switching hotels, inns, etc.\
-  Start_Date stands for date the travel starts.\
-  End_date stands for date the travel ends.\
-  Location stands for the location/area the use is staying\
-  Count stands for the number of people the user is traveling with, including user themselves.\
-  Theme stands for the main purpose of the trip, be it vacation, adventure, business, etc.\
-  Accomodation stands for the place you are staying thoroughout the trip. Note users can have more than one accomodation during the entire travel duration.\
-  Accomodation_Duration stands for the duration for which the user is staying at specific accomodation cite.\
-  Pet stands for the presence of pet
+  *Start_Date* stands for date the travel starts.\
+  *End_date* stands for date the travel ends.\
+  *Location* stands for the location/area the use is staying\
+  *Count* stands for the number of people the user is traveling with, including user themselves.\
+  *Theme* stands for the main purpose of the trip, be it vacation, adventure, business, etc.\
+  *Accomodation* stands for the place you are staying thoroughout the trip. Note users can have more than one accomodation during the entire travel duration.\
+  *Accomodation_Duration* stands for the duration for which the user is staying at specific accomodation cite.\
+  *Pet* stands for the presence of pet as a boolean value
+
+  ## Validation
+  *Start_date* should come before **End_date*.\
+  *Accomodation#* should fall within the entire duration of travel.\
+  *Count* filed should be a positive integer.\
+  *Theme* should be one of the predefined definitions
 
