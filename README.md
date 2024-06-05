@@ -21,6 +21,16 @@ An AI powered travel assistant application.
     "Accomodation#": <Accomodation#_Placeholder>,\
     "Acoomodation#_Duration: <Accomodation#_Duration_Placeholder>,\
     "Pet": <Pet_Placeholder>}
+
+  ## Datatypes
+  {"Start_Date": datetime,\
+    "End_Date": datetime,\
+    "Location": string,\
+    "Count": integer,\
+    "Theme": string,\
+    "Accomodation#": string,\
+    "Acoomodation#_Duration: tuple,\
+    "Pet": boolean}
     
   ## Description
   Here, the entry "Accomodation" has number count # attached to account for switching hotels, inns, etc.\
@@ -31,7 +41,7 @@ An AI powered travel assistant application.
   *Theme* stands for the main purpose of the trip, be it vacation, adventure, business, etc.\
   *Accomodation* stands for the place you are staying thoroughout the trip. Note users can have more than one accomodation during the entire travel duration.\
   *Accomodation_Duration* stands for the duration for which the user is staying at specific accomodation cite.\
-  *Pet* stands for the presence of pet as a boolean value
+  *Pet* stands for the presence of pet.
 
   ## Validation
   *Start_date* should come before **End_date*.\
