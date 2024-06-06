@@ -24,8 +24,20 @@ def main():
 
     # Get the url
     url = f"https://www.booking.com/searchresults.html?ss={city_id}&lang={lang_id}"
+    print("\n"+url+"\n")
 
-    return url
+    # Send a GET request to the URL
+    response = requests.get(url)
+
+    # Parse the HTML content of the URL
+        ## response.text is the raw HTML content of the web page fetched via requests
+        ## 'html.parser' argument tells BeautifulSoup to use HTML parser to parse the document.
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Find all instancs in HTML that contains tag 'div' and attribute 'data-testid=propety-card-container'
+    hotels = soup.find_all('div', {'data-testid': 'property-card-container'})
+
+    return hotels
 
 if __name__ == "__main__":
     print(main())
