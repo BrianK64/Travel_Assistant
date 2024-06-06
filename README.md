@@ -55,5 +55,5 @@ beautifulsoup 4.12.3
   *Theme* should be one of the predefined definitions
 
 # Resources
-https://www.scrapingbee.com/blog/web-scraping-booking/\
+https://www.scrapingbee.com/blog/web-scraping-booking/  \
 https://www.booking.com/
