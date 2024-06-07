@@ -35,9 +35,17 @@ def main():
     soup = BeautifulSoup(response.text, "html.parser")
 
     # Find all instancs in HTML that contains tag 'div' and attribute 'data-testid=propety-card-container'
-    hotels = soup.find_all('div', {'data-testid': 'property-card-container'})
+    #hotels = soup.find_all('div', {'class': 'bcbf33c5c3'}) 
+    # bcbf33c5c3 is a class attribute value for the entire body container  
+    # d4924c9e74 is a class attribute value for the container that contains list of hotels and other elements
+    
+    outer_divs = soup.find_all('div')
+    
+    with open('divs.txt', 'w', encoding='utf-8') as file:
+        for div in outer_divs:
+            file.write(str(div))
 
-    return hotels
+    return outer_divs
 
 if __name__ == "__main__":
     print(main())
