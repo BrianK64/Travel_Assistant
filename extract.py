@@ -10,7 +10,7 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
     soup = BeautifulSoup(contents, "html.parser")
 
     # create a new text file for writing
-    with open('output.txt', 'w', encoding='utf-8') as file:
+    with open('hotel_titles.txt', 'w', encoding='utf-8') as file:
 
         # Find all elements with tag 'div' and attribute data-testtid = 'title'
         for div in soup.find_all('div', {'data-testid': 'title'}):
