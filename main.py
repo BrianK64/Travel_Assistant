@@ -34,8 +34,8 @@ def main():
         ## 'html.parser' argument tells BeautifulSoup to use HTML parser to parse the document.
     soup = BeautifulSoup(response.text, "html.parser")
 
-
     return True
+
 
 if __name__ == "__main__":
     main()
