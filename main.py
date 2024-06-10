@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+# Mapping languages to their corresponding codes
 lang = {
     "English": "en-us",
     "Korean": "ko"
@@ -9,20 +10,23 @@ lang = {
 
 def main():
 
-    # User's preferred language
+    ### Get users' preferred language ###
     completed = 0
+    # Language Selection Loop
     while not completed:
         lang_id = input("Select your language: ")
+        # Check if the selected language is supported
         if lang_id in lang:
+            # get the corresponding language code
             lang_id = lang[lang_id]
             completed = 1
         else:
             print("Selected language not supported\n")
 
-    # Get the destination from user
+    # Get users' destination
     city_id = input("Where are you going? ")
 
-    # Get the url
+    # Construct the URL for the search results page on booking.com with user-provided information.
     url = f"https://www.booking.com/searchresults.html?ss={city_id}&lang={lang_id}"
     print("\nURL: "+url+"\n")
 

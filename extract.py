@@ -15,4 +15,5 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
         # Find all elements with tag 'div' and attribute data-testtid = 'title'
         for div in soup.find_all('div', {'data-testid': 'title'}):
             print(div.text)
+            # write the only text content (no tag) of the div element to a separate file.
             file.write(str(div.text) + '\n')
