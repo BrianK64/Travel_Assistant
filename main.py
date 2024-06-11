@@ -1,7 +1,6 @@
 # IMPORTS
 import requests
 from bs4 import BeautifulSoup
-from datetime import date, timedelta
 
 # Mapping languages to their corresponding codes
 lang = {
