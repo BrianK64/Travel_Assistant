@@ -9,15 +9,6 @@ lang = {
     "Korean": "ko"
 }
 
-# default hotel booking lookup value
-defaults = {
-    'checkin': date.today(),
-    'checkout': date.today() + timedelta(days=1),
-    'group_adults': 2,
-    'group_children': 0,
-    'no_rooms': 1
-}
-
 def main():
 
     ### Get users' preferred language ###
