@@ -1,11 +1,21 @@
 # IMPORTS
 import requests
 from bs4 import BeautifulSoup
+from datetime import date, timedelta
 
 # Mapping languages to their corresponding codes
 lang = {
     "English": "en-us",
     "Korean": "ko"
+}
+
+# default hotel booking lookup value
+defaults = {
+    'checkin': date.today(),
+    'checkout': date.today() + timedelta(days=1),
+    'group_adults': 2,
+    'group_children': 0,
+    'no_rooms': 1
 }
 
 def main():
@@ -26,8 +36,18 @@ def main():
     # Get users' destination
     city_id = input("Where are you going? ")
 
+    # Get check-in and check-out dates
+    # Datetime must be in FFG (YYYY-MM-DD) format
+    checkin = input("State Date: (YYYY-MM-DD) ")
+    checkout = input("End Date: (YYYY-MM-DD) ")
+
+    # Get details for booking hotels
+    group_adults = input("How many adults? ")
+    group_children = input("How many children? ")
+    no_rooms = input("How many rooms? ")
+
     # Construct the URL for the search results page on booking.com with user-provided information.
-    url = f"https://www.booking.com/searchresults.html?ss={city_id}&lang={lang_id}"
+    url = f"https://www.booking.com/searchresults.html?ss={city_id}&lang={lang_id}&checkin={checkin}&checkout={checkout}&group_adults={group_adults}&no_rooms={no_rooms}&group_children={group_children}"
     print("\nURL: "+url+"\n")
 
     # Send a GET request to the URL
