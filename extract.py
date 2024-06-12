@@ -9,6 +9,8 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
 
     soup = BeautifulSoup(contents, "html.parser")
 
+    # Hotel Name Getter
+    print("Hotels:")
     # create a new text file for writing
     with open('hotel_titles.txt', 'w', encoding='utf-8') as file:
 
@@ -17,3 +19,13 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
             print(div.text)
             # write the only text content (no tag) of the div element to a separate file.
             file.write(str(div.text) + '\n')
+
+    # Hotel Rating Getter
+    print("Hotel Ratings: ")
+    with open('hotel_ratings.txt', 'w', encoding='utf-8') as file:
+
+        # Find all elements with tag 'div' and attribute class = 'a3b8729ab1 d86cee9b25'
+        # a3b8729ab1 d86cee9b25 is a web specific code for numerical hotel ratings
+        for div in soup.find_all('div', {'class': 'a3b8729ab1 d86cee9b25'}):
+            print(div.text[0:3])
+            file.write(str(div.text[0:3]) + '\n')
