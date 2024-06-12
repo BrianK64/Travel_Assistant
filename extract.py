@@ -29,3 +29,15 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
         for div in soup.find_all('div', {'class': 'a3b8729ab1 d86cee9b25'}):
             print(div.text[0:3])
             file.write(str(div.text[0:3]) + '\n')
+
+    
+    # Get each hotel's property card contents from HTML
+    with open('hotels.txt', 'w', encoding='utf-8') as file:
+        # each hotel property card container has attribute data-testid = 'property-card-container'
+        for container in soup.find_all('div', {'data-testid': 'property-card-container'}):
+            file.write(str(container) + '\n\n')
+
+            title = container.find('div', {'data-testid': 'title'}).text
+            rating = container.find('div', {'class': 'a3b8729ab1 d86cee9b25'}).text[0:3]
+
+            print(title + '\t' + rating)
