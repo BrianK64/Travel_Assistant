@@ -16,6 +16,8 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
             file.write(str(container) + '\n\n')
 
             title = container.find('div', {'data-testid': 'title'}).text
+            location = container.find('span', {'data-testid':'address'}).text
             rating = container.find('div', {'class': 'a3b8729ab1 d86cee9b25'}).text[0:3]
 
-            print(f"Hotel: {title}\tRating: {rating}")
+
+            print(f"Hotel: {title}\tLocation: {location}\tRating: {rating}")
