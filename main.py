@@ -85,20 +85,18 @@ def main():
 
         soup = BeautifulSoup(contents, "html.parser")
         
-        # Get each hotel's property card contents from HTML
-        with open('hotels.txt', 'w', encoding='utf-8') as file:
-            # each hotel property card container has attribute data-testid = 'property-card-container'
-            for container in soup.find_all('div', {'data-testid': 'property-card-container'}):
-                file.write(str(container) + '\n\n')
+    # Get each hotel's property card contents from HTML
+    # each hotel property card container has attribute data-testid = 'property-card-container'
+    for container in soup.find_all('div', {'data-testid': 'property-card-container'}):
 
-                title = container.find('div', {'data-testid': 'title'}).text
-                location = container.find('span', {'data-testid':'address'}).text
-                #proximity  <span data-testid="distance"
-                rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
-                #room_configurations    <span class="a21c5c4883">
-                #beds   <div class="abf093bdfe">
+        title = container.find('div', {'data-testid': 'title'}).text
+        location = container.find('span', {'data-testid':'address'}).text
+        #proximity  <span data-testid="distance"
+        rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+        #room_configurations    <span class="a21c5c4883">
+        #beds   <div class="abf093bdfe">
 
-                print(f"Hotel: {title}\tLocation: {location}\tRating: {rating}")
+        print(f"Hotel: {title}\tLocation: {location}\tRating: {rating}")
 
     return True
 
