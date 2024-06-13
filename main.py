@@ -83,10 +83,13 @@ def main():
         location = container.find('span', {'data-testid':'address'}).text
         proximity = container.find('span', {'data-testid': 'distance'}).text
         rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+        availability_url = container.find('a', {'data-testid': 'availability-cta-btn'})['href']
         #room_configurations    <span class="a21c5c4883">
         #beds   <div class="abf093bdfe">
 
-        print(f"Hotel: {title}\tLocation: {location}\tProximity: {proximity}\tRating: {rating}")
+        print("-"*100+"\n")
+        print(f"Hotel: {title}\tLocation: {location}\tProximity: {proximity}\tRating: {rating}\n")
+        print(f"Availability: {availability_url}\n")
 
     return True
 
