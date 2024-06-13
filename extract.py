@@ -17,7 +17,9 @@ with open('assets/bookingdotcom_philadelphia.html', 'r', encoding='utf-8') as f:
 
             title = container.find('div', {'data-testid': 'title'}).text
             location = container.find('span', {'data-testid':'address'}).text
+            #proximity  <span data-testid="distance"
             rating = container.find('div', {'class': 'a3b8729ab1 d86cee9b25'}).text[0:3]
-
+            #room_configurations    <span class="a21c5c4883">
+            #beds   <div class="abf093bdfe">
 
             print(f"Hotel: {title}\tLocation: {location}\tRating: {rating}")
