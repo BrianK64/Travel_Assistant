@@ -83,6 +83,7 @@ def main():
         location = container.find('span', {'data-testid':'address'}).text
         proximity = container.find('span', {'data-testid': 'distance'}).text
         rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+        # an external link to a table of available unit list
         availability_url = container.find('a', {'data-testid': 'availability-cta-btn'})['href']
         #room_configurations    <span class="a21c5c4883">
         #beds   <div class="abf093bdfe">
