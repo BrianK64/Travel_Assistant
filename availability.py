@@ -91,7 +91,7 @@ def main():
         if (title == "The Rittenhouse Hotel" and location == "Center City, Philadelphia") or (title == "Philadelphia Airport Marriott" and location == "Philadelphia"):
             pass
         else:
-            print("-"*100+"\n")
+            print("-"*100)
             print(f"Hotel: {title}\tLocation: {location}\tProximity: {proximity}\tRating: {rating}\n")
             
             inner_s = Service(ChromeDriverManager().install())
@@ -109,16 +109,15 @@ def main():
             last_seen_apartment_type = None
             for unit in table.select('tr.js-rt-block-row.e2e-hprt-table-row.hprt-table-last-row, tr.js-rt-block-row.e2e-hprt-table-row'):  #table.find_all('tr', {'class': 'js-rt-block-row e2e-hprt-table-row hprt-table-last-row'}):
                 classes = unit.get('class', [])
-                print(classes)
                 
                 if unit.find('a', {'class': 'hprt-roomtype-link'}) is None:
                     room = last_seen_apartment_type
                 else:
-                    room = unit.find('a', {'class': 'hprt-roomtype-link'})
+                    room = unit.find('a', {'class': 'hprt-roomtype-link'}).text
                     last_seen_apartment_type = room
                 
                 # Get price
-                room_price = unit.find('span', {'class': 'prco-valign-middle-helper'})
+                room_price = unit.find('span', {'class': 'prco-valign-middle-helper'}).text
 
                 """
                 if 'hprt-table-last-row' not in classes:
@@ -133,7 +132,14 @@ def main():
                     print('---single choice---\n')
                     room = unit.find('a', {'class': 'hprt-roomtype-link'})
                 """
-                print(room.text + '\t' + room_price.text)
+
+                # Cleaning white empty lines
+                #room = '\n'.join([line for line in room.split('\n')])
+                #room_price = '\n'.join([line for line in room_price.split('\n')])
+                room = room.strip()
+                room_price = room_price.strip()
+
+                print(f"{room}: \t{room_price}")
 
     return True
 
