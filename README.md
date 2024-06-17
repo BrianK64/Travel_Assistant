@@ -5,7 +5,8 @@ An AI powered travel assistant application.
 # Installation
 Python 3.9.13\
 requests 2.26.0\
-beautifulsoup 4.12.3
+beautifulsoup 4.12.3\
+selenium 4.21.0
 
 # To-Do List:
   1. Data Collection and Validation
