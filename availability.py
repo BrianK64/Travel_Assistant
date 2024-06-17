@@ -116,6 +116,9 @@ def main():
                 else:
                     room = unit.find('a', {'class': 'hprt-roomtype-link'})
                     last_seen_apartment_type = room
+                
+                # Get price
+                room_price = unit.find('span', {'class': 'prco-valign-middle-helper'})
 
                 """
                 if 'hprt-table-last-row' not in classes:
@@ -130,7 +133,7 @@ def main():
                     print('---single choice---\n')
                     room = unit.find('a', {'class': 'hprt-roomtype-link'})
                 """
-                print(room.text)
+                print(room.text + '\t' + room_price.text)
 
     return True
 
