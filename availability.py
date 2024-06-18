@@ -99,7 +99,8 @@ def main():
         
         # Error handling for HTML elements with missing/inconsistent attribute values - error
         try:
-            rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+            rating = container.find('div', {'data-testid': 'review-score'}).text#[0:3]
+            rating = rating.split()[1]
         except AttributeError:
             rating = None
         # an external link to a table of available unit list
