@@ -79,7 +79,12 @@ def main():
     # each hotel property card container has attribute data-testid = 'property-card-container'
     for container in soup.find_all('div', {'data-testid': 'property-card-container'}):
 
-        title = container.find('div', {'data-testid': 'title'}).text
+        # Error handling for HTML elements with missing/inconsistent attribute values
+        try:
+            title = container.find('div', {'data-testid': 'title'}).text
+        except AttributeError:
+            title = None
+
         location = container.find('span', {'data-testid':'address'}).text
         proximity = container.find('span', {'data-testid': 'distance'}).text
         rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
@@ -92,7 +97,7 @@ def main():
             pass
         else:
             print("-"*100)
-            print(f"Hotel: {title}\tLocation: {location}\tProximity: {proximity}\tRating: {rating}\n")
+            print(f"Hotel: {str(title)}\tLocation: {location}\tProximity: {proximity}\tRating: {rating}\n")
             
             inner_s = Service(ChromeDriverManager().install())
             inner_driver = webdriver.Chrome(service=inner_s)
