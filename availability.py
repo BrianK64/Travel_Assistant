@@ -97,7 +97,11 @@ def main():
         except AttributeError:
             proximity = None
         
-        rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+        # Error handling for HTML elements with missing/inconsistent attribute values - error
+        try:
+            rating = container.find('div', {'data-testid': 'review-score'}).text[0:3]
+        except AttributeError:
+            rating = None
         # an external link to a table of available unit list
         availability_url = container.find('a', {'data-testid': 'availability-cta-btn'})['href']
         #room_configurations    <span class="a21c5c4883">
@@ -107,7 +111,7 @@ def main():
             pass
         else:
             print("-"*100)
-            print(f"Hotel: {str(title)}\tLocation: {str(location)}\tProximity: {proximity}\tRating: {rating}\n")
+            print(f"Hotel: {str(title)}\tLocation: {str(location)}\tProximity: {str(proximity)}\tRating: {str(rating)}\n")
             
             inner_s = Service(ChromeDriverManager().install())
             inner_driver = webdriver.Chrome(service=inner_s)
@@ -122,7 +126,7 @@ def main():
             table = inner_soup.find('table', {'id': 'hprt-table'})
 
             last_seen_apartment_type = None
-            for unit in table.select('tr.js-rt-block-row.e2e-hprt-table-row.hprt-table-last-row, tr.js-rt-block-row.e2e-hprt-table-row'):  #table.find_all('tr', {'class': 'js-rt-block-row e2e-hprt-table-row hprt-table-last-row'}):
+            for unit in table.select('tr.js-rt-block-row.e2e-hprt-table-row.hprt-table-last-row, tr.js-rt-block-row.e2e-hprt-table-row'):
                 classes = unit.get('class', [])
                 
                 if unit.find('a', {'class': 'hprt-roomtype-link'}) is None:
@@ -134,23 +138,7 @@ def main():
                 # Get price
                 room_price = unit.find('span', {'class': 'prco-valign-middle-helper'}).text
 
-                """
-                if 'hprt-table-last-row' not in classes:
-                    print("---multiple choices---\n")
-                    if unit.find('a', {'class': 'hprt-roomtype-link'}) is not None:
-                        room = unit.find('a', {'class': 'hprt-roomtype-link'})
-                        last_seen_apartment_type = room
-                    else:
-                        room = last_seen_apartment_type
-
-                else:
-                    print('---single choice---\n')
-                    room = unit.find('a', {'class': 'hprt-roomtype-link'})
-                """
-
                 # Cleaning white empty lines
-                #room = '\n'.join([line for line in room.split('\n')])
-                #room_price = '\n'.join([line for line in room_price.split('\n')])
                 room = room.strip()
                 room_price = room_price.strip()
 
